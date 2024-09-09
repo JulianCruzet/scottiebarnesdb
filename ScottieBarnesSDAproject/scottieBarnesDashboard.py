@@ -109,14 +109,20 @@ with col[1]:
     avg_stats = data.groupby('Outcome')[['PTS', 'AST', 'TRB', 'BLK', 'STL']].mean().reset_index()
     avg_stats['Outcome'] = avg_stats['Outcome'].replace({1: 'Win', 0: 'Loss'})
 
-    # Create a bar chart using Altair
+    # Create a bar chart using Altair with custom colors
     bar_chart = alt.Chart(avg_stats).transform_fold(
         ['PTS', 'AST', 'TRB', 'BLK', 'STL'],
         as_=['Stat', 'Value']
     ).mark_bar().encode(
         x=alt.X('Stat:N', title='Performance Stat'),
         y=alt.Y('Value:Q', title='Average Stat Value'),
-        color='Outcome:N',
+        color=alt.Color('Outcome:N',
+                        scale=alt.Scale(
+                            domain=['Win', 'Loss'],
+                            range=['#1f77b4', '#ff7f0e']  # Custom colors: blue for Win, orange for Loss
+                        ),
+                        title='Game Outcome'
+                        ),
         column='Outcome:N'
     ).properties(
         width=150,
