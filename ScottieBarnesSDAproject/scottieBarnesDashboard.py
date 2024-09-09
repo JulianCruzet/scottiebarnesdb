@@ -50,16 +50,34 @@ y_pred = mlp.predict(X_test)
 
 with st.sidebar:
     # Title
-    st.title("🏀 Exploring the Impact of Player Stats on Game Outcomes: A Scottie Barnes Case Study \n - Created by Julian Cruzet")
+    st.title("🏀 Exploring the Impact of Player Stats on Game Outcomes: A Scottie Barnes Case Study")
 
+    st.caption("Created by Julian Cruzet\n")
 
     # Introduction
     st.markdown("""
-    The aim of this project is to investigate the relationship between a player statistics and the outcomes of basketball games, with a specific focus on Scottie Barnes. The dataset utilized for this analysis, sourced from basketballreference.com, contains comprehensive information about Barnes' performance in various games, including points scored (PTS), assists (AST), rebounds (TRB), blocks (BLK), steals (STL), and plus/minus (+/-).
+                
 
-    Given the rich dataset, the primary question of interest revolves around understanding how Scottie Barnes' individual performance metrics influence the likelihood of a win or loss for the Toronto Raptors. Exploring this relationship could provide valuable insights into the significance of different player statistics in determining game outcomes.
+    The goal of this project is to investigate the relationship between a player's statistics, and the outcomes of NBA games, with a specific focus on Scottie Barnes. The dataset utilized for this analysis, sourced from basketballreference.com, contains comprehensive information about Barnes' performance in various games, including points scored (PTS), assists (AST), rebounds (TRB), blocks (BLK), steals (STL), and plus/minus (+/-).
+
+    Given the rich dataset, the primary question of interest revolves around understanding how Barnes' individual performance metrics influences the likelihood of a win or loss for the Toronto Raptors. Exploring this relationship could provide valuable insights into the significance of different player statistics in determining game outcomes.
 
     This section will delve into the data, the motivation behind the analysis, and the key questions guiding the exploration.
+                
+    """)
+
+    st.title("☄️ Conclusion")
+
+    st.markdown("""
+    Based off the analysis, the following insights were found:
+
+    - Firstly, the accuracy of the model in predicting the outcome of a is found to have an accuracy of 85%, indicating a very accurate interpretation of the the dataset.
+
+    - The feature importances suggests that the impacts of the key features (Points, assists, rebounds, blocks, steals and plus/minus) indicates that Scottie's highest positive impact stat is his plus/minus. This means that Scottie in general being on the floor has the highest impact on the team's success. Likewise, his least positive impact stat is his points stat. This can be interpreted in many ways. One could say that Scottie is simply not scoring enough in games and that he needs to score more points. Another way this can be interpreted is that the team does not need to strongly rely on Scottie's point production to be able to win games. I personally believe it is a mix of both.
+
+    - The pair plot that was generated gives us a good visual representation of Scottie's statistical performance and their impact on a game's outcome. Orange represents his stats in wins while blue represents his stats in losses. As we can see, in wins his stats in all categories is higher than his stats in losses. This shows that when Scottie Barnes scores more points, gets more steals or overall plays well, his team has a higher chance of winning.
+
+    - To sum it all up, the insights found suggest that Scottie Barnes' individual player performance, especially points, assists, rebounds, steals, blocks and +/-, significantly influence's the outcome of a match.
                 
     """)
 
@@ -85,7 +103,7 @@ with col[0]:
 
 with col[1]:
     # Bar chart comparing average performance stats in wins vs losses
-    st.subheader("📊 Performance in Wins vs Losses")
+    st.subheader("📊 Statistical Performance in Wins vs Losses")
     
     # Calculate average stats for wins and losses
     avg_stats = data.groupby('Outcome')[['PTS', 'AST', 'TRB', 'BLK', 'STL']].mean().reset_index()
@@ -107,7 +125,9 @@ with col[1]:
 
     st.altair_chart(bar_chart)
 
-    st.markdown("Hover your curson over each bar to see the average value for each performance stat in wins and losses respectively.")
+    st.markdown("Hover your curson over each bar to see the average value for each performance statistic in both wins and losses respectively.")
+
+    st.markdown("As you can see, during wins, Scottie Barnes' performance stats are higher than in losses. This suggests that when Scottie Barnes performs well, the Toronto Raptors have a higher chance of winning.")
 
     # Convert the dictionary to a pandas DataFrame
     df_scottie = pd.DataFrame(scottie_stats)
@@ -133,7 +153,7 @@ with col[2]:
 
     # Display the chart
     st.subheader("🔥 Raptors' Win % with & Without Barnes") 
-    st.markdown("With Scottie Barnes")
+    st.caption("With Scottie Barnes ⬇️")
     st.altair_chart(donut_chart)
 
     # Define the loss percentage percentage
@@ -144,7 +164,9 @@ with col[2]:
     donut_chart = make_donut(wins_percentage, input_colour)
 
     # Display the chart
-    st.markdown("Without Scottie Barnes")
+    st.caption("No Scottie Barnes ⬇️")
     st.altair_chart(donut_chart)    
 
     st.markdown("Toronto has a winning record when Barnes plays, a losing record when not.")
+
+    st.subheader("[Contact Me!](https://www.linkedin.com/in/juliancruzet/)")

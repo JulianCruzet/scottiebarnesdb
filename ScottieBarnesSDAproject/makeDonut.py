@@ -9,9 +9,9 @@ def make_donut(wins_percentage, input_colour):
 
     # Define chart colors
     if input_colour == 'green':
-        chart_color = ['#27AE60', '#12783D']  # Green for wins, Gray for the rest
+        chart_color = ['#27AE60', '#D3D3D3']  # Green for wins, Gray for the rest
     if input_colour == 'red':
-        chart_color = ['#E74C3C', '#781F16']  # Green for wins, Gray for the rest
+        chart_color = ['#E74C3C', '#D3D3D3']  # Green for wins, Gray for the rest
 
 
 
@@ -36,7 +36,7 @@ def make_donut(wins_percentage, input_colour):
     ).properties(width=130, height=130)
 
     # Add text to the chart
-    text = plot.mark_text(align='center', color="#000000", font="Lato", fontSize=16, fontWeight=700).encode(
+    text = plot.mark_text(align='center', color="#27AE60", font="Lato", fontSize=16, fontWeight=700).encode(
         text=alt.value(f'{wins_percentage:.1f}% ')
     )
 
