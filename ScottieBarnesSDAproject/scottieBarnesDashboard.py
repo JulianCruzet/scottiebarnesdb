@@ -125,7 +125,7 @@ with col[1]:
 
     st.altair_chart(bar_chart)
 
-    st.markdown("Hover your curson over each bar to see the average value for each performance statistic in both wins and losses respectively.")
+    st.markdown("Hover your curser over each bar to see the average value for each performance statistic in both wins and losses respectively.")
 
     st.markdown("As you can see, during wins, Scottie Barnes' performance stats are higher than in losses. This suggests that when Scottie Barnes performs well, the Toronto Raptors have a higher chance of winning.")
 
