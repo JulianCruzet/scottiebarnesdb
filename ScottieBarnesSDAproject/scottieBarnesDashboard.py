@@ -72,8 +72,6 @@ with col[0]:
     st.subheader("🎯 Model Accuracy")
     st.write(f"Accuracy: {accuracy_score(y_test, y_pred) * 100:.2f}%")
 
-    st.metric(label="🎯 Model Accuracy", value=accuracy_score(y_test, y_pred) * 100, delta='')
-
     # Feature Importance
     st.subheader("❗️ Feature Importances")
     feature_importances = mlp.coefs_[0]
